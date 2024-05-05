@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #searchInput {
+            width: 70%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SEARCH THE LOCATION</h1>
+        <input type="text" id="searchInput" placeholder="Enter location">
+        <button onclick="searchLocation()">Search</button>
+        <!--<iframe id="mapIframe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d234700.34657955563!2d77.24072866913092!3d23.19963911401348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c428f8fd68fbd%3A0x2155716d572d4f8!2sBhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1714918888956!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <script>
+        function searchLocation() {
+            var location = document.getElementById('searchInput').value;
+            var encodedLocation = encodeURIComponent(location);
+            var mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d234700.34657955563!2d77.24072866913092!3d23.19963911401348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c428f8fd68fbd%3A0x2155716d572d4f8!2sBhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1714918888956!5m2!1sen!2sin";
+
+            if (encodedLocation !== "") {
+                mapUrl = "https://www.google.com/maps/embed/v1/place?q=" + encodedLocation + "&key=YOUR_API_KEY";
+            }
+
+            document.getElementById('mapIframe').src = mapUrl;
+        }
+    </script>
+</body>
+</html>
